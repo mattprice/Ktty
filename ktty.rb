@@ -1,8 +1,9 @@
+require 'sinatra'
+require 'sinatra/reloader' if development?
+
 require 'htmlentities'
 require 'json'
 require 'open-uri'
-require 'sinatra'
-require 'sinatra/reloader' unless ENV['RACK_ENV'] == 'production'
 
 get '/' do
    html = ""
@@ -16,7 +17,6 @@ get '/' do
       content  = HTMLEntities.new.encode file[1]['content']
       language = file[1]['language']
 
-      html << "RACK_ENV: #{ENV['RACK_ENV']} <br>\n"
       html << "Language: #{language} <br>\n"
       html << "<pre><code class=\"language-#{language}\">#{content}</code></pre>"
    }
