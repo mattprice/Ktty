@@ -1,7 +1,7 @@
 source :rubygems
 
-gem 'sinatra', '~> 1.3.3'
 gem 'htmlentities'
+gem 'sinatra', '~> 1.3.3'
 
 group :development, :test do
   gem 'sinatra-contrib'

@@ -1,8 +1,8 @@
+require 'htmlentities'
+require 'json'
+require 'open-uri'
 require 'sinatra'
 require 'sinatra/reloader' unless ENV['RACK_ENV'] == 'production'
-
-require 'open-uri'
-require 'htmlentities'
 
 get '/' do
    html = ""
