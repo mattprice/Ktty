@@ -88,17 +88,6 @@
       "outputAbbreviatedPath" : "\/public\/static\/vim.min.min.js",
       "fileType" : 64
     },
-    "\/public\/static\/java.min.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/public\/static\/java.min.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/public\/static\/java.min.min.js",
-      "fileType" : 64
-    },
     "\/prism\/clike.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -108,6 +97,17 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/public\/static\/clike.min.js",
+      "fileType" : 64
+    },
+    "\/public\/static\/java.min.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/static\/java.min.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/public\/static\/java.min.min.js",
       "fileType" : 64
     },
     "\/prism\/javascript.js" : {
@@ -121,17 +121,6 @@
       "outputAbbreviatedPath" : "\/public\/static\/javascript.min.js",
       "fileType" : 64
     },
-    "\/public\/static\/ruby.min.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/public\/static\/ruby.min.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/public\/static\/ruby.min.min.js",
-      "fileType" : 64
-    },
     "\/prism\/vim.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -141,6 +130,17 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/public\/static\/vim.min.js",
+      "fileType" : 64
+    },
+    "\/public\/static\/ruby.min.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/static\/ruby.min.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/public\/static\/ruby.min.min.js",
       "fileType" : 64
     },
     "\/prism\/ruby.js" : {
