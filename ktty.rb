@@ -6,16 +6,17 @@ require 'json'
 require 'open-uri'
 
 get '/' do
-   html = ""
+   host = development? ? "/static" : "http://static.ktty.co"
 
    # Request the Gist from the GitHub API.
    gist = open('http://cdn.mattprice.me/gists/4520261') do |data|
       JSON.parse(data.read)
    end
 
+   html  = "<!doctype html>"
    html << "<html><head>"
    html << "<title>#{gist['description'].strip}</title>"
-   html << "<link href='prism.css' rel='stylesheet' />"
+   html << "<link href ='#{host}/prism.css' rel='stylesheet' />"
    html << "</head><body>\n"
 
    # Gists can contain multiple files so loop through each one.
@@ -28,7 +29,7 @@ get '/' do
       html << "<pre><code class=\"language-#{language}\">#{content}</code></pre>\n"
    }
 
-   html << "<script src='prism.js'></script>"
+   html << "<script src='#{host}/prism.min.js'></script>"
    html << "</body></html>"
 
    html
