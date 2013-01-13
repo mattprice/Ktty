@@ -25,21 +25,21 @@ def get_class(language)
    class_name[language] || language
 end
 
-# Some languages may include others (e.g., HTML can contain JavaScript or CSS).
-# Other languages may extend a base language (e.g., JavaScript extends "clike").
+# Some languages may extend a base language (e.g., JavaScript extends "clike").
+# Some languages may contain others (e.g., HTML can contain JavaScript or CSS).
 def get_dependencies(language)
-   includes = {
-      'markup' => ['css', 'javascript'],
-   }
-
    extends = {
       'javascript' => ['clike'],
       'java'       => ['clike'],
    }
 
+   contains = {
+      'markup' => ['css', 'javascript'],
+   }
+
    r  = extends[language] || []
    r += [language]
-   r += includes[language] || []
+   r += contains[language] || []
 end
 
 get '/' do
