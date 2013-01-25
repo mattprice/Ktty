@@ -48,9 +48,10 @@ end
 
 get '/g/:snippet' do |id|
    url = development? ? "/static" : "http://static.ktty.co"
-   api = development? ? "http://cdn.mattprice.me/gists" : "http://api.github.com/gists"
+   api = development? ? "http://cdn.mattprice.me/gists" : "https://api.github.com/gists"
 
    # Request the Gist from the GitHub API.
+   # TODO: Need to handle 404 errors.
    gist = open("#{api}/#{id}") do |data|
       JSON.parse(data.read)
    end
