@@ -43,7 +43,7 @@ def get_dependencies(language)
 end
 
 get '/' do
-   host = development? ? "/static" : "http://static.ktty.co"
+   url = development? ? "/static" : "http://static.ktty.co"
 
    # Request the Gist from the GitHub API.
    gist = open('http://cdn.mattprice.me/gists/4520261') do |data|
@@ -53,7 +53,8 @@ get '/' do
    html  = "<!doctype html>"
    html << "<html><head>"
    html << "<title>#{gist['description'].strip}</title>"
-   html << "<link href ='#{host}/prism.css' rel='stylesheet' />"
+   html << "<link href ='#{url}/ktty.css' rel='stylesheet' />"
+   html << "<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>"
    html << "</head><body>\n"
 
    # Gists can contain multiple files so loop through each one.
@@ -70,9 +71,9 @@ get '/' do
 
    # Include specific language files.
    # TODO: This should probably check to see if we support the language.
-   html << "<script src='#{host}/prism.min.js'></script>"
+   html << "<script src='#{url}/prism.min.js'></script>"
    dependencies.uniq.each { |language|
-      html << "<script src='#{host}/#{language}.min.js'></script>"
+      html << "<script src='#{url}/#{language}.min.js'></script>"
    }
 
    html << "</body></html>"
