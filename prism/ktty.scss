@@ -3,7 +3,6 @@ body {
    padding: 0;
 }
 
-
 code[class*="language-"],
 pre[class*="language-"] {
    color: black;
@@ -26,9 +25,27 @@ pre[class*="language-"] {
 }
 
 pre {
-   // margin: .5em 0;
+   margin: 0;
    overflow: auto;
-   padding: 1em;
+   padding: 10px 10px 15px 60px;
+   position: relative;
+}
+
+.linenumWrap {
+   left: 0;
+   padding: 10px 15px 15px 15px;
+   position: absolute;
+   text-align: right;
+   top: 0;
+}
+
+.linenumWrap .linenum {
+   color: #999 !important;
+   margin-right: 10px;
+
+   -moz-user-select: none;
+   -webkit-user-select: none;
+   user-select: none;
 }
 
 .comment,
@@ -83,7 +100,7 @@ pre {
 .atrule,
 .attr-value,
 .keyword {
-   color: #61862F;
+   color: transparentize(#61862F, .15);
 }
 
 
@@ -100,23 +117,23 @@ pre {
    cursor: help;
 }
 
-.tab:not(:empty):before,
-.cr:before,
-.lf:before {
-   color: hsl(24, 20%, 85%);
-}
+// .tab:not(:empty):before,
+// .cr:before,
+// .lf:before {
+//    color: hsl(24, 20%, 85%);
+// }
 
-.tab:not(:empty):before {
-   content: '▸';
-}
+// .tab:not(:empty):before {
+//    content: '▸';
+// }
 
-.cr:before {
-   content: '␍';
-}
+// .cr:before {
+//    content: '␍';
+// }
 
-.lf:before {
-   content: '␊';
-}
+// .lf:before {
+//    content: '␊';
+// }
 
 a {
    color: inherit;

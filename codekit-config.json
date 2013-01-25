@@ -2,6 +2,17 @@
   "CodeKitInfo" : "This is a CodeKit project configuration file. It is designed to sync project settings across multiple machines. Modifying the contents of this file can be a poor life decision if you don't know what you're doing. This file is not useful unless accompanied by the project that created it in CodeKit. For more information, see: http:\/\/incident57.com\/codekit",
   "creatorBuild" : "8248",
   "files" : {
+    "\/public\/static\/linenums.min.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/static\/linenums.min.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/public\/static\/linenums.min.min.js",
+      "fileType" : 64
+    },
     "\/public\/static\/prism.css" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -95,6 +106,17 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/public\/static\/vim.min.min.js",
+      "fileType" : 64
+    },
+    "\/prism\/show-invisibles.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/prism\/show-invisibles.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/public\/static\/show-invisibles.min.js",
       "fileType" : 64
     },
     "\/public\/static\/java.min.js" : {
@@ -197,6 +219,17 @@
       "outputAbbreviatedPath" : "\/public\/static\/css.min.js",
       "fileType" : 64
     },
+    "\/public\/static\/show-invisibles.min.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/static\/show-invisibles.min.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/public\/static\/show-invisibles.min.min.js",
+      "fileType" : 64
+    },
     "\/prism\/prism.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -262,6 +295,17 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/public\/static\/haml.min.min.js",
+      "fileType" : 64
+    },
+    "\/prism\/linenums.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/prism\/linenums.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/public\/static\/linenums.min.js",
       "fileType" : 64
     }
   },

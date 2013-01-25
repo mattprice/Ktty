@@ -66,7 +66,7 @@ get '/' do
       language      = get_class file['language']
       dependencies += get_dependencies language
 
-      html << "<pre><code class=\"language-#{language}\">#{content}</code></pre>\n"
+      html << "<pre data-linenums=\"1\"><code class=\"language-#{language}\">#{content}</code></pre>\n"
    }
 
    # Include specific language files.
@@ -75,6 +75,8 @@ get '/' do
    dependencies.uniq.each { |language|
       html << "<script src='#{url}/#{language}.min.js'></script>"
    }
+   html << "<script src='#{url}/show-invisibles.min.js'></script>"
+   html << "<script src='#{url}/linenums.min.js'></script>"
 
    html << "</body></html>"
 
