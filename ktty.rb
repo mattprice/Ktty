@@ -48,10 +48,10 @@ end
 
 get '/g/:snippet' do |id|
    url = development? ? "/static" : "http://static.ktty.co"
+   api = development? ? "http://cdn.mattprice.me/gists" : "http://api.github.com/gists"
 
    # Request the Gist from the GitHub API.
-   gist = open('http://cdn.mattprice.me/gists/4520261') do |data|
-   gist = open("http://cdn.mattprice.me/gists/#{id}") do |data|
+   gist = open("#{api}/#{id}") do |data|
       JSON.parse(data.read)
    end
 
