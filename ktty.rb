@@ -43,10 +43,15 @@ def get_dependencies(language)
 end
 
 get '/' do
+   "Hello, world!"
+end
+
+get '/g/:snippet' do |id|
    url = development? ? "/static" : "http://static.ktty.co"
 
    # Request the Gist from the GitHub API.
    gist = open('http://cdn.mattprice.me/gists/4520261') do |data|
+   gist = open("http://cdn.mattprice.me/gists/#{id}") do |data|
       JSON.parse(data.read)
    end
 
