@@ -4,4 +4,4 @@ require 'bundler'
 Bundler.require
 
 require './ktty'
-run Sinatra::Application
+run Ktty
