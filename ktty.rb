@@ -46,6 +46,10 @@ get '/' do
    "Hello, world!"
 end
 
+get '/g/' do
+   redirect '/', 301
+end
+
 get '/g/:snippet' do |id|
    url = development? ? "/static" : "http://static.ktty.co"
    api = development? ? "http://cdn.mattprice.me/gists" : "https://api.github.com/gists"
