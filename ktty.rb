@@ -49,7 +49,7 @@ class Ktty < Sinatra::Base
    end
 
    get '/' do
-      "Hello, world!"
+      'Hello, world!'
    end
 
    get '/g/' do
@@ -58,24 +58,27 @@ class Ktty < Sinatra::Base
 
    get '/g/:snippet' do |id|
       if development?
-         url = "/static"
-         api = "http://mattprice.me/gists"
+         url = '/static'
+         api = 'http://mattprice.me/gists'
       else
-         url = "http://static.ktty.co"
-         api = "https://api.github.com/gists"
+         url = 'http://static.ktty.co'
+         api = 'https://api.github.com/gists'
       end
 
       # Request the Gist from the GitHub API.
-      # TODO: Need to handle 404 errors.
-      gist = open("#{api}/#{id}") do |data|
-         JSON.parse(data.read)
+      begin
+         gist = open("#{api}/#{id}") do |data|
+            JSON.parse(data.read)
+         end
+      rescue OpenURI::HTTPError => e
+         halt 404
       end
 
-      html  = "<!doctype html>"
-      html << "<html><head>"
+      html  = '<!doctype html>'
+      html << '<html><head>'
       html << "<title>#{gist['description'].strip}</title>"
       html << "<link href ='#{url}/ktty.css' rel='stylesheet' />"
-      html << "<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>"
+      html << '<link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">'
       html << "</head><body>\n"
 
       # Gists can contain multiple files so loop through each one.
@@ -99,8 +102,12 @@ class Ktty < Sinatra::Base
       html << "<script src='#{url}/show-invisibles.min.js'></script>"
       html << "<script src='#{url}/linenums.min.js'></script>"
 
-      html << "</body></html>"
+      html << '</body></html>'
 
       html
+   end
+
+   not_found do
+      '404 Page Not Found'
    end
 end
