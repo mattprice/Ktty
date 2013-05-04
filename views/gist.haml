@@ -1,0 +1,17 @@
+%html
+  %head
+    %title<
+      &= @description
+    %link{:href => '/static/ktty.css', :rel => 'stylesheet', :type => 'text/css'}
+    %link{:href => 'http://fonts.googleapis.com/css?family=Source+Code+Pro', :rel => 'stylesheet', :type => 'text/css'}
+
+  %body
+    - @files.each do |file|
+      %pre{:data => {:linenums => 1}}
+        %code{:class => "language-#{file['language']}"}= file['content']
+
+    %script{:src => '/static/prism.min.js'}
+    - @dependencies.each do |lang|
+      %script{:src => "/static/#{lang}.min.js"}
+    %script{:src => '/static/show-invisibles.min.js'}
+    %script{:src => '/static/linenums.min.js'}

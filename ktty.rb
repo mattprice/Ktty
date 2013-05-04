@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/reloader' if development?
 
+require 'haml'
 require 'htmlentities'
 require 'json'
 require 'open-uri'
@@ -74,37 +75,26 @@ class Ktty < Sinatra::Base
          halt 404
       end
 
-      html  = '<!doctype html>'
-      html << '<html><head>'
-      html << "<title>#{gist['description'].strip}</title>"
-      html << "<link href ='#{url}/ktty.css' rel='stylesheet' />"
-      html << '<link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">'
-      html << "</head><body>\n"
+      @description  = gist['description']
+      @files        = []
+      @dependencies = []
 
       # Gists can contain multiple files so loop through each one.
-      dependencies = []
       gist['files'].each { |file|
          file = file[1]
 
-         content       = HTMLEntities.new.encode file['content']
-         language      = get_class file['language']
-         dependencies += get_dependencies language
+         content        = HTMLEntities.new.encode file['content']
+         language       = get_class file['language']
+         @dependencies += get_dependencies language
 
-         html << "<pre data-linenums=\"1\"><code class=\"language-#{language}\">#{content}</code></pre>\n"
+         @files.push({'language' => language, 'content' => content})
       }
 
-      # Include specific language files.
-      # TODO: This should probably check to see if we support the language.
-      html << "<script src='#{url}/prism.min.js'></script>"
-      dependencies.uniq.each { |language|
-         html << "<script src='#{url}/#{language}.min.js'></script>"
-      }
-      html << "<script src='#{url}/show-invisibles.min.js'></script>"
-      html << "<script src='#{url}/linenums.min.js'></script>"
+      # Don't load language files multiple times.
+      # TODO: We should probably check to see if we support the language.
+      @dependencies = @dependencies.uniq
 
-      html << '</body></html>'
-
-      html
+      haml :gist
    end
 
    not_found do
