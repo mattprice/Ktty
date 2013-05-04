@@ -9,7 +9,7 @@ class Ktty < Sinatra::Base
    set :root  , File.dirname(__FILE__)
    set :static, true
 
-   register Sinatra::Reloader
+   register Sinatra::Reloader if settings.development?
 
    # Some languages share the same Prism highlighting component, at least for now.
    def get_class(language)
@@ -57,7 +57,7 @@ class Ktty < Sinatra::Base
    end
 
    get '/g/:snippet' do |id|
-      if development?
+      if settings.development?
          url = '/static'
          api = 'http://mattprice.me/gists'
       else
