@@ -1,3 +1,9 @@
+# Ktty
+
+> Purrfectly designed code snippets.
+
+[![Dependency Status](https://gemnasium.com/mattprice/Ktty.png)](https://gemnasium.com/mattprice/Ktty) [![Code Climate](https://codeclimate.com/github/mattprice/Ktty.png)](https://codeclimate.com/github/mattprice/Ktty)
+
 ## License (MIT)
 Copyright (c) 2013 Matthew Price, http://mattprice.me/
 
