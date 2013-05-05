@@ -6,11 +6,11 @@ body {
 code[class*="language-"],
 pre[class*="language-"] {
    color: black;
-   // text-shadow: 0 1px white;
+   direction: ltr;
    font-family: 'Source Code Pro', Consolas, Monaco, 'Andale Mono', monospace;
    font-size: 14px;
-   direction: ltr;
    text-align: left;
+   /*text-shadow: 0 1px white;*/
    white-space: pre;
    word-spacing: normal;
 
@@ -71,8 +71,8 @@ pre {
 .tag,
 .boolean,
 .number {
-   background-color: transparentize(#F3F2FF, .15);
-   color: transparentize(#7653C1, .15);
+   background-color: rgba(243,242,255,0.85);
+   color: rgba(118,83,193,0.85);
 }
 
 .selector,
@@ -81,8 +81,8 @@ pre {
 }
 
 .string {
-   background-color: transparentize(#FEFCF6, .15);
-   color: transparentize(#C66000, .15);
+   background-color: rgba(254,252,246,0.85);
+   color: rgba(198,96,0,0.85);
 }
 
 .string.punctuation {
@@ -100,7 +100,7 @@ pre {
 .atrule,
 .attr-value,
 .keyword {
-   color: transparentize(#61862F, .15);
+   color: rgba(97,134,47,0.85);
 }
 
 
@@ -117,23 +117,23 @@ pre {
    cursor: help;
 }
 
-// .tab:not(:empty):before,
-// .cr:before,
-// .lf:before {
-//    color: hsl(24, 20%, 85%);
-// }
+/*.tab:not(:empty):before,
+.cr:before,
+.lf:before {
+   color: hsl(24, 20%, 85%);
+}
 
-// .tab:not(:empty):before {
-//    content: '▸';
-// }
+.tab:not(:empty):before {
+   content: '▸';
+}
 
-// .cr:before {
-//    content: '␍';
-// }
+.cr:before {
+   content: '␍';
+}
 
-// .lf:before {
-//    content: '␊';
-// }
+.lf:before {
+   content: '␊';
+}*/
 
 a {
    color: inherit;

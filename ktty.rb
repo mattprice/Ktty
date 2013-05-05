@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'sinatra/assetpack'
 require 'sinatra/reloader' if development?
 
 require 'haml'
@@ -8,9 +9,21 @@ require 'open-uri'
 
 class Ktty < Sinatra::Base
    set :root  , File.dirname(__FILE__)
-   set :static, true
+   # set :static, true
 
    register Sinatra::Reloader if settings.development?
+   register Sinatra::AssetPack
+
+   # Configure AssetPack to precompress JS and CSS files.
+   assets do
+      serve '/css', :from => 'assets/css'
+      css :app, '/css/app.css', [
+         '/css/ktty.css'
+      ]
+      css_compression :simple
+
+      prebuild true
+   end
 
    # Some languages share the same Prism highlighting component, at least for now.
    def get_class(language)
