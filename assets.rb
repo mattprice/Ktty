@@ -2,7 +2,7 @@ require 'sinatra/base'
 require 'sprockets'
 require 'yui/compressor'
 
-class KttyAssets < Sinatra::Base
+class Assets < Sinatra::Base
   configure do
     set :assets, (Sprockets::Environment.new { |config|
       config.append_path 'assets/asset-bundles'

@@ -68,7 +68,6 @@ class Ktty < Sinatra::Base
     }
 
     # Don't load language files multiple times.
-
     @assets = @assets.uniq
 
     haml :gist
