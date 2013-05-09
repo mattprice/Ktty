@@ -1,7 +1,9 @@
 require 'rubygems'
 require 'bundler'
 
-Bundler.require
-
 require './ktty'
+require './kttyassets'
+
+Bundler.require
+use KttyAssets
 run Ktty

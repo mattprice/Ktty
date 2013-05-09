@@ -2,7 +2,7 @@
   %head
     %title<
       &= @description
-    != css :app
+    %link{:href => '/css/ktty.css', :rel => 'stylesheet', :type => 'text/css'}
     %link{:href => 'http://fonts.googleapis.com/css?family=Source+Code+Pro', :rel => 'stylesheet', :type => 'text/css'}
 
   %body
@@ -10,8 +10,8 @@
       %pre{:data => {:linenums => 1}}
         %code{:class => "language-#{file['language']}"}= file['content']
 
-    %script{:src => '/static/prism.min.js'}
-    - @dependencies.each do |lang|
-      %script{:src => "/static/#{lang}.min.js"}
-    %script{:src => '/static/show-invisibles.min.js'}
-    %script{:src => '/static/linenums.min.js'}
+    %script{:src => '/js/prism-core.js'}
+    - @assets.each do |language|
+      %script{:src => "/js/#{language}.js"}
+    %script{:src => '/js/show-invisibles.js'}
+    %script{:src => '/js/linenums.js'}

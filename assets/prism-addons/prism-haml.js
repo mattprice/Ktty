@@ -1,5 +1,3 @@
-// Copied from https://gist.github.com/3430542
-
 Prism.languages.haml = {
   'string': /("|')(\\?.)*?\1/g,
   'comment': /\/[^\r\n]*(\r?\n|$)/g,

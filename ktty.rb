@@ -1,35 +1,16 @@
-require 'sinatra/base'
-require 'sinatra/assetpack'
-require 'sinatra/reloader' if development?
-
 require 'haml'
 require 'htmlentities'
 require 'json'
 require 'open-uri'
+require 'sinatra/base'
 
 class Ktty < Sinatra::Base
-   set :root  , File.dirname(__FILE__)
-   # set :static, true
-
-   register Sinatra::Reloader if settings.development?
-   register Sinatra::AssetPack
-
-   # Configure AssetPack to precompress JS and CSS files.
-   assets do
-      serve '/css', :from => 'assets/css'
-      css :app, '/css/app.css', [
-         '/css/ktty.css'
-      ]
-      css_compression :simple
-
-      prebuild true
-   end
-
-   # Some languages share the same Prism highlighting component, at least for now.
+   # Some languages share the same Prism highlighting component,
+   # or are found under a different name.
    def get_class(language)
       class_name = {
          'c#'          => 'clike',
-         'c++'         => 'clike',
+         'c++'         => 'cpp',
          'd'           => 'clike',
          'go'          => 'clike',
          'html'        => 'markup',
@@ -43,23 +24,6 @@ class Ktty < Sinatra::Base
 
       language = language.downcase
       class_name[language] || language
-   end
-
-   # Some languages may extend a base language (e.g., JavaScript extends "clike").
-   # Some languages may contain others (e.g., HTML can contain JavaScript or CSS).
-   def get_dependencies(language)
-      extends = {
-         'javascript' => ['clike'],
-         'java'       => ['clike'],
-      }
-
-      contains = {
-         'markup' => ['css', 'javascript'],
-      }
-
-      r  = extends[language] || []
-      r += [language]
-      r += contains[language] || []
    end
 
    get '/' do
@@ -88,24 +52,24 @@ class Ktty < Sinatra::Base
          halt 404
       end
 
-      @description  = gist['description']
-      @files        = []
-      @dependencies = []
+      @description = gist['description']
+      @files       = []
+      @assets      = []
 
       # Gists can contain multiple files so loop through each one.
       gist['files'].each { |file|
          file = file[1]
 
-         content        = HTMLEntities.new.encode file['content']
-         language       = get_class file['language']
-         @dependencies += get_dependencies language
+         content   = HTMLEntities.new.encode file['content']
+         language  = get_class file['language']
 
-         @files.push({'language' => language, 'content' => content})
+         @files .push({'language' => language, 'content' => content})
+         @assets.push(language)
       }
 
       # Don't load language files multiple times.
-      # TODO: We should probably check to see if we support the language.
-      @dependencies = @dependencies.uniq
+
+      @assets = @assets.uniq
 
       haml :gist
    end

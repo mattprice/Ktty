@@ -1,5 +1,3 @@
-// Copied from https://github.com/samflores/prism-langs
-
 Prism.languages.ruby = {
   'comment': /#[^\r\n]*(\r?\n|$)/g,
   'string': /("|')(\\?.)*?\1/g,
