@@ -48,7 +48,7 @@ class Ktty < Sinatra::Base
       gist = open("#{api}/#{id}") do |data|
         JSON.parse(data.read)
       end
-    rescue OpenURI::HTTPError => e
+    rescue OpenURI::HTTPError
       halt 404
     end
 
