@@ -3,6 +3,22 @@ body {
    padding: 0;
 }
 
+
+a {
+   color: inherit;
+}
+
+h2 {
+   font-family: 'Source Code Pro', Consolas, Monaco, 'Andale Mono', monospace;
+   font-size: 18px;
+   font-weight: normal;
+   margin: 10px 10px 0 10px;
+   text-transform: uppercase;
+}
+
+/* Code Formatting
+   --------------- */
+
 code[class*="language-"],
 pre[class*="language-"] {
    color: black;
@@ -10,7 +26,6 @@ pre[class*="language-"] {
    font-family: 'Source Code Pro', Consolas, Monaco, 'Andale Mono', monospace;
    font-size: 14px;
    text-align: left;
-   /*text-shadow: 0 1px white;*/
    white-space: pre;
    word-spacing: normal;
 
@@ -48,6 +63,8 @@ pre {
    user-select: none;
 }
 
+/* Syntax Highlighting
+   ------------------- */
 .comment,
 .prolog,
 .doctype,
@@ -134,7 +151,3 @@ pre {
 .lf:before {
    content: '␊';
 }*/
-
-a {
-   color: inherit;
-}

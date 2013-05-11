@@ -35,7 +35,7 @@ class Gist < Ktty
       content   = HTMLEntities.new.encode file['content']
       language  = get_class file['language']
 
-      @files .push({'language' => language, 'content' => content})
+      @files .push({'language' => language, 'content' => content, 'name' => file['filename']})
       @assets.push(language)
     }
 
