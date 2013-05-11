@@ -1,6 +1,6 @@
 # Ktty
 
-> Purrfectly designed code snippets.
+Purrfectly designed code snippets.
 
 [![Dependency Status](https://gemnasium.com/mattprice/Ktty.png)](https://gemnasium.com/mattprice/Ktty) [![Code Climate](https://codeclimate.com/github/mattprice/Ktty.png)](https://codeclimate.com/github/mattprice/Ktty)
 
