@@ -5,43 +5,53 @@ require 'open-uri'
 require './ktty'
 
 class Gist < Ktty
-  # Redirect blank requests.
+  # Redirect empty requests.
   get '/g/' do
     redirect '/', 301
   end
 
-  # Load snippet requests.
+  # Load and process snippet requests.
   get '/g/:snippet' do |id|
-    # Set the development Gist API endpoint.
-    api = settings.development? ? 'http://mattprice.me' : 'https://api.github.com'
+    gist = load(id)
+    process(gist)
 
-    # Request the Gist from the GitHub API.
+    haml :gist
+  end
+
+  # Request the gist from the GitHub API.
+  def load(id)
+    endpoint = settings.development? ? 'http://mattprice.me/gists' : 'https://api.github.com/gists'
+
+    # Attempt API request. If it fails, return a 404.
+    # TODO: The request could fail for multiple reasons. We should return something failure-specific.
     begin
-      gist = open("#{api}/gists/#{id}") do |data|
+      return open("#{endpoint}/#{id}") do |data|
         JSON.parse(data.read)
       end
     rescue OpenURI::HTTPError
       halt 404
     end
+  end
 
-    @description = gist['description']
-    @files       = []
-    @assets      = []
+  def process(gist)
+    @assets = []
+    @files  = []
 
-    # Gists can contain multiple files so loop through each one.
+    # A gist can contain multiple files so we need to loop through each one.
     gist['files'].each { |file|
       file = file[1]
 
-      content   = HTMLEntities.new.encode file['content']
-      language  = get_class file['language']
+      language = get_class file['language']
 
-      @files .push({'language' => language, 'content' => content, 'name' => file['filename']})
       @assets.push(language)
+      @files.push({
+        'content'  => HTMLEntities.new.encode(file['content']),
+        'language' => language,
+        'name'     => file['filename']
+      })
     }
 
     # Don't load language files multiple times.
-    @assets = @assets.uniq
-
-    haml :gist
+    @assets.uniq!
   end
 end
