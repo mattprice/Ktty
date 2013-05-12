@@ -12,7 +12,6 @@ class Ktty < Sinatra::Base
       'json'        => 'javascript',
       'objective-c' => 'clike',
       'perl'        => 'clike',
-      'php'         => 'clike',
       'rust'        => 'clike',
       'vala'        => 'clike',
     }
