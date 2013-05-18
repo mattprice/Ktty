@@ -8,7 +8,7 @@
  * 		- Smarter constant and function matching
  *
  * Adds the following new token classes:
- * 		constant, deliminator, variable, function, class, package
+ * 		constant, deliminator, variable, function, scope, package, this
  */
 
 Prism.languages.php = Prism.languages.extend('clike', {
@@ -18,11 +18,13 @@ Prism.languages.php = Prism.languages.extend('clike', {
 
 Prism.languages.insertBefore('php', 'keyword', {
 	'deliminator': /(\?>|\?&gt;|&lt;\?php|<\?php)/ig,
+	'this': /\$this/,
 	'variable': /(\$\w+)\b/ig,
-	'class': {
-		pattern: /[a-z0-9_\\]+::/ig,
+	'scope': {
+		pattern: /\b[a-z0-9_\\]+::/ig,
 		inside: {
-			operator: /::/
+			keyword: /(static|self|parent)/,
+			punctuation: /(::|\\)/
 		}
 	},
 	'package': {
@@ -34,18 +36,10 @@ Prism.languages.insertBefore('php', 'keyword', {
 	}
 });
 
-Prism.languages.insertBefore('php', 'punctuation', {
-	'function': {
-		pattern: /[a-z0-9_]+\(/ig,
-		inside: {
-			punctuation: /\(/
-		}
-	},
+Prism.languages.insertBefore('php', 'operator', {
 	'property': {
-		pattern: /-&gt;[a-z0-9_]+/ig,
-		inside: {
-			operator: /-&gt;/
-		}
+		pattern: /(-&gt;)[a-z0-9_]+/ig,
+		lookbehind: true
 	}
 });
 
