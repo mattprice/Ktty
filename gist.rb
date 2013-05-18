@@ -34,8 +34,10 @@ class Gist < Ktty
   end
 
   def process(gist)
-    @assets = []
-    @files  = []
+    # TODO: We should probably come up with a
+    @description = gist['description']
+    @assets      = []
+    @files       = []
 
     # A gist can contain multiple files so we need to loop through each one.
     gist['files'].each { |file|
@@ -45,7 +47,7 @@ class Gist < Ktty
 
       @assets.push(language)
       @files.push({
-        'content'  => HTMLEntities.new.encode(file['content']),
+        'content'  => file['content'],
         'language' => language,
         'name'     => file['filename']
       })

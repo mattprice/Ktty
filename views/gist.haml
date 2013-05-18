@@ -9,7 +9,8 @@
     - @files.each do |file|
       %h2= file['name']
       %pre{:data => {:linenums => 1}}
-        %code{:class => "language-#{file['language']}"}= file['content']
+        %code{:class => "language-#{file['language']}"}
+          &= file['content']
 
     %script{:src => '/js/prism-core.js'}
     - @assets.each do |language|
