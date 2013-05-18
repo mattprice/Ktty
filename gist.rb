@@ -34,14 +34,19 @@ class Gist < Ktty
   end
 
   def process(gist)
-    # TODO: We should probably come up with a
-    @description = gist['description']
-    @assets      = []
-    @files       = []
+    @title  = gist['description']
+    @assets = []
+    @files  = []
 
     # A gist can contain multiple files so we need to loop through each one.
     gist['files'].each { |file|
       file = file[1]
+
+      # If there's no gist description, try to use a filename as the page title instead.
+      # Ignore the default gist filename which begins with "Gistfile".
+      if @title.empty? && !file['filename'].start_with?("gistfile")
+        @title = file['filename']
+      end
 
       language = get_class file['language']
 
@@ -52,6 +57,11 @@ class Gist < Ktty
         'name'     => file['filename']
       })
     }
+
+    # If we still don't have a page title, use the gist ID as a fallback.
+    if @title.empty?
+      @title = "gist:#{gist['id']}"
+    end
 
     # Don't load language files multiple times.
     @assets.uniq!
