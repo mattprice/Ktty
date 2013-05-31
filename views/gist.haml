@@ -8,12 +8,11 @@
   %body
     - @files.each do |file|
       %h2= file['name']
-      %pre{:data => {:linenums => 1}}
+      %pre{:class => 'line-numbers'}
         %code{:class => "language-#{file['language']}"}
           &= file['content']
 
     %script{:src => '/js/prism-core.js'}
     - @assets.each do |language|
       %script{:src => "/js/#{language}.js"}
-    %script{:src => '/js/show-invisibles.js'}
     %script{:src => '/js/linenums.js'}

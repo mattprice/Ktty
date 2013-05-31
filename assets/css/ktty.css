@@ -46,21 +46,48 @@ pre {
    position: relative;
 }
 
-.linenumWrap {
-   left: 0;
-   padding: 10px 15px 15px 15px;
-   position: absolute;
-   text-align: right;
-   top: 0;
+/* Line Numbers
+   ------------ */
+
+pre.line-numbers {
+   position: relative;
+   /*padding-left: 3.8em;*/
+   counter-reset: linenumber;
 }
 
-.linenumWrap .linenum {
-   color: #999 !important;
-   margin-right: 10px;
+pre.line-numbers > code {
+   position: relative;
+}
 
-   -moz-user-select: none;
+.line-numbers .line-numbers-rows {
+   /*border-right: 1px solid #ccc;*/
+   font-size: 100%;
+   left: -3.8em;
+   letter-spacing: -1px;
+   pointer-events: none;
+   position: absolute;
+   top: 0;
+   width: 3em; /* Works for line-numbers below 1000 lines */
+
    -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
    user-select: none;
+
+}
+
+.line-numbers-rows > span {
+   pointer-events: none;
+   display: block;
+   counter-increment: linenumber;
+}
+
+.line-numbers-rows > span:before {
+   content: counter(linenumber);
+   color: #999;
+   display: block;
+   padding-right: 0.8em;
+   text-align: right;
 }
 
 /* Syntax Highlighting
