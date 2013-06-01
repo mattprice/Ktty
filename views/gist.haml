@@ -12,7 +12,6 @@
         %code{:class => "language-#{file['language']}"}
           &= file['content']
 
-    %script{:src => '/js/prism-core.js'}
+    %script{:src => '/js/prism.js'}
     - @assets.each do |language|
       %script{:src => "/js/#{language}.js"}
-    %script{:src => '/js/linenums.js'}
