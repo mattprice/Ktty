@@ -7,9 +7,6 @@ Bundler.require
 require './gist'
 use Gist
 
-require './pastebin'
-use Pastebin
-
 # Assets Plugin
 require './assets'
 use Assets
