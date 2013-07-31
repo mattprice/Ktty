@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sprockets'
+require 'uglifier'
 require 'yui/compressor'
 
 class Assets < Sinatra::Base
@@ -12,9 +13,8 @@ class Assets < Sinatra::Base
       config.append_path 'assets/prism/plugins/show-invisibles'
 
       # Compress everything during production.
-      # TODO: I think I'd rather use Uglifier for Javascript.
       if !settings.development?
-        config.js_compressor  = YUI::JavaScriptCompressor.new
+        config.js_compressor  = Uglifier.new
         config.css_compressor = YUI::CssCompressor.new
       end
     })
