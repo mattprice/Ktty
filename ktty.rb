@@ -8,7 +8,7 @@ class Ktty < Sinatra::Base
       'c#'          => 'clike',
       'c++'         => 'cpp',
       'd'           => 'clike',
-      'go'          => 'clike',
+      'go'          => 'golang',
       'json'        => 'javascript',
       'objective-c' => 'clike',
       'perl'        => 'clike',
