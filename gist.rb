@@ -20,12 +20,10 @@ class Gist < Ktty
 
   # Request the gist from the GitHub API.
   def load(id)
-    endpoint = 'https://api.github.com/gists'
-
     # Attempt API request. If it fails, return a 404.
     # TODO: The request could fail for multiple reasons. We should return something failure-specific.
     begin
-      return open("#{endpoint}/#{id}") do |data|
+      return open("https://api.github.com/gists/#{id}") do |data|
         JSON.parse(data.read)
       end
     rescue OpenURI::HTTPError
