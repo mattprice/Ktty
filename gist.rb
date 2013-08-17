@@ -20,7 +20,7 @@ class Gist < Ktty
 
   # Request the gist from the GitHub API.
   def load(id)
-    endpoint = settings.development? ? 'http://mattprice.me/gists' : 'https://api.github.com/gists'
+    endpoint = 'https://api.github.com/gists'
 
     # Attempt API request. If it fails, return a 404.
     # TODO: The request could fail for multiple reasons. We should return something failure-specific.
