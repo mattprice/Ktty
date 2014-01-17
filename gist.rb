@@ -10,6 +10,15 @@ class Gist < Ktty
     redirect '/', 301
   end
 
+  # Load and process requests for raw snippet code.
+  get '/g/:snippet/raw' do |id|
+    gist = load(id)
+    process(gist)
+
+    # Currently only works with Gists containing one file.
+    haml :raw
+  end
+
   # Load and process snippet requests.
   get '/g/:snippet' do |id|
     gist = load(id)
