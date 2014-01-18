@@ -24,7 +24,13 @@ class Gist < Ktty
     gist = load(id)
     process(gist)
 
-    haml :gist
+    # Check for Markdown files.
+    # TODO: This probably isn't the best solution, but it works right now.
+    if @assets.index('markdown')
+      haml :markdown
+    else
+      haml :gist
+    end
   end
 
   # Request the gist from the GitHub API.
@@ -50,7 +56,7 @@ class Gist < Ktty
       file = file[1]
 
       # If there's no gist description, try to use a filename as the page title instead.
-      # Ignore the default gist filename which begins with "Gistfile".
+      # Ignore the default gist filename which begins with "gistfile".
       if @title.empty? && !file['filename'].start_with?("gistfile")
         @title = file['filename']
       end
