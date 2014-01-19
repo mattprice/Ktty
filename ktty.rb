@@ -5,10 +5,9 @@ class Ktty < Sinatra::Base
   def get_class(language)
     # Some languages share the same Prism highlighting component.
     class_name = {
-      'c#'          => 'clike',
+      'c#'          => 'csharp',
       'c++'         => 'cpp',
       'd'           => 'clike',
-      'go'          => 'golang',
       'json'        => 'javascript',
       'objective-c' => 'clike',
       'perl'        => 'clike',
