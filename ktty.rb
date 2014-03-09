@@ -20,7 +20,7 @@ class Ktty < Sinatra::Base
   end
 
   get '/' do
-    'Syntax is <strong>http://ktty.co/g/gist_id</strong>. Example: <a href="http://www.ktty.co/g/5ba8b745963d9f89683b">http://www.ktty.co/g/5ba8b745963d9f89683b</a>'
+    'Syntax is <strong>http://ktty.co/g/gist_id</strong>. Example: <a href="http://ktty.co/g/5ba8b745963d9f89683b">http://ktty.co/g/5ba8b745963d9f89683b</a>'
   end
 
   not_found do
