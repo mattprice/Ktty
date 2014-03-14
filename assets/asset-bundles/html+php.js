@@ -1,2 +1,2 @@
-//= require html
+//= require markup
 //= require php

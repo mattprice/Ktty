@@ -13,9 +13,10 @@ class Assets < Sinatra::Base
       config.append_path 'assets/prism/plugins/show-invisibles'
 
       # Compress everything during production.
+      # TODO: YUI requires Java. Need to use something else...
       if !settings.development?
         config.js_compressor  = Uglifier.new
-        config.css_compressor = YUI::CssCompressor.new
+        # config.css_compressor = YUI::CssCompressor.new
       end
     })
   end

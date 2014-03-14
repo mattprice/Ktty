@@ -112,16 +112,26 @@ pre.line-numbers > code {
 }
 
 .property,
-.tag,
 .boolean,
 .number {
    background-color: rgba(243,242,255,0.85);
    color: rgba(118,83,193,0.85);
 }
 
-.selector,
-.attr-name {
+.selector {
    color: #690;
+}
+
+.tag {
+   color: rgb(48,111,159);
+}
+
+.attr-name {
+   color: rgb(78,159,207);
+}
+
+.attr-value {
+   color: rgb(216,73,80);
 }
 
 .string {
@@ -142,11 +152,10 @@ pre.line-numbers > code {
 }
 
 .atrule,
-.attr-value,
+.builtin,
 .keyword {
    color: rgba(97,134,47,0.85);
 }
-
 
 .regex,
 .important {
