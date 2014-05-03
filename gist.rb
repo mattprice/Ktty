@@ -36,14 +36,12 @@ class Gist < Ktty
   # Request the gist from the GitHub API.
   def load(id)
     # Attempt API request. If it fails, return a 404.
-    # TODO: The request could fail for multiple reasons. We should return something failure-specific.
-    begin
-      return open("https://api.github.com/gists/#{id}") do |data|
-        JSON.parse(data.read)
-      end
-    rescue OpenURI::HTTPError
-      halt 404
+    # TODO: We should return something failure-specific instead of just a 404.
+    return open("https://api.github.com/gists/#{id}") do |data|
+      JSON.parse(data.read)
     end
+  rescue OpenURI::HTTPError
+    halt 404
   end
 
   def process(gist)
@@ -52,29 +50,27 @@ class Gist < Ktty
     @files  = []
 
     # A gist can contain multiple files so we need to loop through each one.
-    gist['files'].each { |file|
+    gist['files'].each do |file|
       file = file[1]
 
-      # If there's no gist description, try to use a filename as the page title instead.
-      # Ignore the default gist filename which begins with "gistfile".
-      if @title.empty? && !file['filename'].start_with?("gistfile")
+      # If there's no description, try using a filename as the title instead,
+      # but ignore the default gist filename which begins with "gistfile".
+      if @title.empty? && !file['filename'].start_with?('gistfile')
         @title = file['filename']
       end
 
       language = get_class file['language']
 
       @assets.push(language)
-      @files.push({
+      @files.push(
         'content'  => file['content'],
         'language' => language,
         'name'     => file['filename']
-      })
-    }
+      )
+    end
 
     # If we still don't have a page title, use the gist ID as a fallback.
-    if @title.empty?
-      @title = "gist:#{gist['id']}"
-    end
+    @title = "gist:#{gist['id']}" if @title.empty?
 
     # Don't load language files multiple times.
     @assets.uniq!

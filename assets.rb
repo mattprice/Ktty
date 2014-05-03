@@ -5,7 +5,7 @@ require 'yui/compressor'
 
 class Assets < Sinatra::Base
   configure do
-    set :assets, (Sprockets::Environment.new { |config|
+    set :assets, (Sprockets::Environment.new do |config|
       config.append_path 'assets/asset-bundles'
       config.append_path 'assets/css'
       config.append_path 'assets/prism-addons'
@@ -14,11 +14,11 @@ class Assets < Sinatra::Base
 
       # Compress everything during production.
       # TODO: YUI requires Java. Need to use something else...
-      if !settings.development?
+      unless settings.development?
         config.js_compressor  = Uglifier.new
         # config.css_compressor = YUI::CssCompressor.new
       end
-    })
+    end)
   end
 
   get '/css/ktty.css' do
