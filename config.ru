@@ -6,6 +6,8 @@ Bundler.require
 # Ktty Plugins
 require './gist'
 use Gist
+require './fileshuttle'
+use FileShuttle
 
 # Assets Plugin
 require './assets'

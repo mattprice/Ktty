@@ -5,8 +5,8 @@ gem 'sinatra',        '~> 1.4'
 
 gem 'haml',           '~> 4.0'
 gem 'htmlentities',   '~> 4.3'
-gem 'redcarpet',      '~> 3.0'
+gem 'redcarpet',      '~> 3.1'
 
-gem 'sprockets',      '~> 2.11'
-gem 'uglifier',       '~> 2.4'
+gem 'sprockets',      '~> 2.12'
+gem 'uglifier',       '~> 2.5'
 gem 'yui-compressor', '~> 0.12'
