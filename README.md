@@ -1,13 +1,13 @@
 # Ktty
 
-Purrfectly designed code snippets.
+[![Dependency Status](http://img.shields.io/gemnasium/mattprice/Ktty.svg?style=flat)](https://gemnasium.com/mattprice/Ktty)
+[![Code Climate](http://img.shields.io/codeclimate/github/mattprice/Ktty.svg?style=flat)](https://codeclimate.com/github/mattprice/Ktty)
 
-[![Dependency Status](https://gemnasium.com/mattprice/Ktty.png)](https://gemnasium.com/mattprice/Ktty)
-[![Code Climate](https://codeclimate.com/github/mattprice/Ktty.png)](https://codeclimate.com/github/mattprice/Ktty)
+Purrfectly designed code snippets.
 
 ## License (MIT)
 
-Copyright (c) 2013 Matthew Price, http://mattprice.me/
+Copyright (c) 2013-2014 Matthew Price, http://mattprice.me/
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
