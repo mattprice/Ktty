@@ -8,6 +8,7 @@ class Assets < Sinatra::Base
     set :assets, (Sprockets::Environment.new do |config|
       config.append_path 'assets/asset-bundles'
       config.append_path 'assets/css'
+      config.append_path 'public_html/images'
       config.append_path 'assets/prism-addons'
       config.append_path 'assets/prism/components'
       config.append_path 'assets/prism/plugins/show-invisibles'
@@ -24,6 +25,11 @@ class Assets < Sinatra::Base
   get '/css/ktty.css' do
     content_type('text/css')
     settings.assets['ktty.css']
+  end
+
+  get '/images/kitten.jpg' do
+    content_type('image/jpeg')
+    settings.assets['kitten.jpg']
   end
 
   # TODO: Sinatra returns status code 200 even if a file doesn't exist.

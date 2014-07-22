@@ -1,8 +1,6 @@
 require 'sinatra/base'
 
 class Ktty < Sinatra::Base
-  SAMPLE_URL = 'http://ktty.co/g/5ba8b745963d9f89683b'
-
   # Some languages share the same Prism highlighting component.
   CLASS_ALTS = {
     'c#'          => 'csharp',
@@ -23,8 +21,7 @@ class Ktty < Sinatra::Base
   end
 
   get '/' do
-    'Syntax is <strong>http://ktty.co/g/gist_id</strong>.' \
-    " Example: <a href='#{SAMPLE_URL}'>#{SAMPLE_URL}</a>"
+    haml :index
   end
 
   not_found do
