@@ -19,12 +19,12 @@ h2 {
 /* Code Formatting
    --------------- */
 
-code[class*="language-"],
-pre[class*="language-"] {
+pre,
+code {
    color: black;
    direction: ltr;
    font-family: 'Source Code Pro', Consolas, Monaco, 'Andale Mono', monospace;
-   font-size: 14px;
+   font-size: 16px;
    text-align: left;
    white-space: pre;
    word-spacing: normal;
@@ -89,101 +89,3 @@ pre.line-numbers > code {
    padding-right: 0.8em;
    text-align: right;
 }
-
-/* Syntax Highlighting
-   ------------------- */
-.comment,
-.prolog,
-.doctype,
-.cdata {
-   color: #ADADAD;
-}
-
-.comment.punctuation {
-   color: #ADADAD;
-}
-
-.punctuation {
-   color: #000000;
-}
-
-.namespace {
-   opacity: .7;
-}
-
-.property,
-.boolean,
-.number {
-   background-color: rgba(243,242,255,0.85);
-   color: rgba(118,83,193,0.85);
-}
-
-.selector {
-   color: #690;
-}
-
-.tag {
-   color: rgb(48,111,159);
-}
-
-.attr-name {
-   color: rgb(78,159,207);
-}
-
-.attr-value {
-   color: rgb(216,73,80);
-}
-
-.string {
-   background-color: rgba(254,252,246,0.85);
-   color: rgba(198,96,0,0.85);
-}
-
-.string.punctuation {
-   color: #E69A4C;
-}
-
-.operator,
-.entity,
-.url,
-.language-css .string,
-.style .string {
-   color: #626FC9;
-}
-
-.atrule,
-.builtin,
-.keyword {
-   color: rgba(97,134,47,0.85);
-}
-
-.regex,
-.important {
-   color: #e90;
-}
-
-.important {
-   font-weight: bold;
-}
-
-.entity {
-   cursor: help;
-}
-
-/*.tab:not(:empty):before,
-.cr:before,
-.lf:before {
-   color: hsl(24, 20%, 85%);
-}
-
-.tab:not(:empty):before {
-   content: '▸';
-}
-
-.cr:before {
-   content: '␍';
-}
-
-.lf:before {
-   content: '␊';
-}*/

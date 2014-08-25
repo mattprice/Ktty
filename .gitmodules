@@ -1,4 +1,0 @@
-[submodule "assets/prism"]
-	path = assets/prism
-	url = https://github.com/LeaVerou/prism.git
-	branch = gh-pages

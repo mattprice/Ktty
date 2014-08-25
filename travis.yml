@@ -1,5 +1,2 @@
 rvm:
-  - "1.9.3"
-
-before_install:
-  - git submodule update --init --recursive
+  - '2.1.1'

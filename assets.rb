@@ -6,12 +6,8 @@ require 'yui/compressor'
 class Assets < Sinatra::Base
   configure do
     set :assets, (Sprockets::Environment.new do |config|
-      config.append_path 'assets/asset-bundles'
       config.append_path 'assets/css'
       config.append_path 'public_html/images'
-      config.append_path 'assets/prism-addons'
-      config.append_path 'assets/prism/components'
-      config.append_path 'assets/prism/plugins/show-invisibles'
 
       # Compress everything during production.
       # TODO: YUI requires Java. Need to use something else...
@@ -27,14 +23,13 @@ class Assets < Sinatra::Base
     settings.assets['ktty.css']
   end
 
+  get '/css/pygments.css' do
+    content_type('text/css')
+    settings.assets['pygments.css']
+  end
+
   get '/images/kitten.jpg' do
     content_type('image/jpeg')
     settings.assets['kitten.jpg']
-  end
-
-  # TODO: Sinatra returns status code 200 even if a file doesn't exist.
-  get '/js/:file.js' do |file|
-    content_type('application/javascript')
-    settings.assets["#{file}.js"]
   end
 end

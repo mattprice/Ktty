@@ -1,17 +1,10 @@
 require 'sinatra/base'
 
 class Ktty < Sinatra::Base
-  # Some languages share the same Prism highlighting component.
+  # GitHub and Rouge don't always use the same language code.
   CLASS_ALTS = {
-    'c#'          => 'csharp',
-    'c++'         => 'cpp',
-    'd'           => 'clike',
-    'html'        => 'markup',
-    'json'        => 'javascript',
-    'objective-c' => 'clike',
-    'perl'        => 'clike',
-    'rust'        => 'clike',
-    'vala'        => 'clike'
+    # 'c#'          => 'csharp',
+    # 'c++'         => 'cpp',
   }
 
   # Convert the Gist API response into the correct language file.

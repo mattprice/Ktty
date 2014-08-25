@@ -49,6 +49,9 @@ class Gist < Ktty
     @assets = []
     @files  = []
 
+    # Initiate a Rouge formatter.
+    formatter = Rouge::Formatters::HTML.new(css_class: 'highlight', wrap: false)
+
     # A gist can contain multiple files so we need to loop through each one.
     gist['files'].each do |file|
       file = file[1]
@@ -61,9 +64,12 @@ class Gist < Ktty
 
       language = get_class file['language']
 
+      # Find the correct Rouge lexer for the given language.
+      lexer = Rouge::Lexer.find(language)
+
       @assets.push(language)
       @files.push(
-        'content'  => file['content'],
+        'content'  => formatter.format(lexer.lex(file['content'])),
         'language' => language,
         'name'     => file['filename']
       )

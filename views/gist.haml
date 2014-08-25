@@ -3,14 +3,32 @@
     %title<
       &= @title
     %link{:href => '/css/ktty.css', :rel => 'stylesheet', :type => 'text/css'}
+    %link{:href => '/css/pygments.css', :rel => 'stylesheet', :type => 'text/css'}
     %link{:href => 'http://fonts.googleapis.com/css?family=Source+Code+Pro', :rel => 'stylesheet', :type => 'text/css'}
 
   %body
     - @files.each do |file|
       %h2= file['name']
       %pre{:class => 'line-numbers'}
-        %code{:class => "language-#{file['language']}"}&= file['content']
+        %code{:class => 'highlight'}= file['content']
 
-    %script{:src => '/js/prism.js'}
-    - @assets.each do |language|
-      %script{:src => "/js/#{language}.js"}
+    :javascript
+      // Based on the line numbers plugin for http://prismjs.com/.
+      var code = document.querySelector('code');
+      var pre = code.parentNode;
+
+      var linesNum = (1 + code.textContent.split('\n').length);
+      var lineNumbersWrapper;
+
+      lines = new Array(linesNum);
+      lines = lines.join('<span></span>');
+
+      lineNumbersWrapper = document.createElement('span');
+      lineNumbersWrapper.className = 'line-numbers-rows';
+      lineNumbersWrapper.innerHTML = lines;
+
+      if (pre.hasAttribute('data-start')) {
+         pre.style.counterReset = 'linenumber ' + (parseInt(pre.getAttribute('data-start'), 10) - 1);
+      }
+
+      code.appendChild(lineNumbersWrapper);
