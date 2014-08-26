@@ -28,5 +28,6 @@ Icon
 .Spotlight-V100
 .Trashes
 
-### FileShuttle ###
-f/
+### Private Files ###
+public_html/embed/
+unicorn.rb
