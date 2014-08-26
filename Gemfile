@@ -4,7 +4,6 @@ ruby '2.1.1'
 gem 'sinatra',        '~> 1.4'
 
 gem 'haml',           '~> 4.0'
-gem 'htmlentities',   '~> 4.3'
 gem 'redcarpet',      '~> 3.1'
 gem 'rouge',          '~> 1.6'
 

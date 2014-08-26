@@ -3,9 +3,11 @@ require 'bundler'
 
 Bundler.require
 
-# Ktty Plugins
+# Code / Gists
 require './gist'
 use Gist
+
+# File Uploads
 require './fileshuttle'
 use FileShuttle
 

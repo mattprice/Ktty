@@ -1,5 +1,4 @@
 require 'haml'
-require 'htmlentities'
 require 'json'
 require 'open-uri'
 require './ktty'
@@ -65,7 +64,7 @@ class Gist < Ktty
       language = get_class file['language']
 
       # Find the correct Rouge lexer for the given language.
-      lexer = Rouge::Lexer.find(language)
+      lexer = Rouge::Lexer.find(language) || Rouge::Lexers::PlainText.new
 
       @assets.push(language)
       @files.push(
