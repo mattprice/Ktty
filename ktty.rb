@@ -1,16 +1,15 @@
 require 'sinatra/base'
 
 class Ktty < Sinatra::Base
-  # GitHub and Rouge don't always use the same language code.
-  CLASS_ALTS = {
-    # 'c#'          => 'csharp',
-    # 'c++'         => 'cpp',
+  # Where possible, aliases should be submitted upstream to Rouge.
+  ALIASES = {
+    'objective-c' => 'objc',
   }
 
   # Convert the Gist API response into the correct language file.
   def get_class(language)
     language = language.downcase
-    CLASS_ALTS[language] || language
+    ALIASES[language] || language
   end
 
   get '/' do
