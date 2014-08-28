@@ -1,22 +1,10 @@
-require 'sinatra/base'
+require 'app/routes'
 
-class Ktty < Sinatra::Base
-  # Where possible, aliases should be submitted upstream to Rouge.
-  ALIASES = {
-    'objective-c' => 'objc',
-  }
-
-  # Convert the Gist API response into the correct language file.
-  def get_class(language)
-    language = language.downcase
-    ALIASES[language] || language
-  end
-
-  get '/' do
-    haml :index
-  end
-
-  not_found do
-    '404 Page Not Found'
+module Ktty
+  class App < Sinatra::Application
+    use Ktty::Routes::Assets
+    use Ktty::Routes::Gists
+    use Ktty::Routes::Index
+    use Ktty::Routes::Uploads
   end
 end

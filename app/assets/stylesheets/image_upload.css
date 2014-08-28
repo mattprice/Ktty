@@ -1,0 +1,13 @@
+.wrapper {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+
+img {
+  max-height: 70%;
+  max-width: 90%;
+  height: auto;
+  width: auto;
+}

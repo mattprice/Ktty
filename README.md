@@ -3,7 +3,7 @@
 [![Dependency Status](http://img.shields.io/gemnasium/mattprice/Ktty.svg?style=flat)](https://gemnasium.com/mattprice/Ktty)
 [![Code Climate](http://img.shields.io/codeclimate/github/mattprice/Ktty.svg?style=flat)](https://codeclimate.com/github/mattprice/Ktty)
 
-Purrfectly designed code snippets.
+Purrfectly designed file sharing.
 
 ## License (MIT)
 

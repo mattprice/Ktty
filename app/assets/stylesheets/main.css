@@ -1,0 +1,39 @@
+body {
+   margin: 0;
+   padding: 0;
+   background-color: #fbfbfb;
+}
+
+a {
+   color: inherit;
+}
+
+.center {
+  position: relative;
+  top: 50%;
+  text-align: center;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+h2 {
+   font-family: 'Source Code Pro', Consolas, Monaco, 'Andale Mono', monospace;
+   font-size: 20px;
+   font-weight: normal;
+   margin: 2em .5em 0 .75em;
+   text-transform: uppercase;
+}
+
+header {
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  height: 50px;
+  font-family: "Avenir Next";
+  font-weight: 400;
+  margin-bottom: -25px; /* 1/2 the height */
+}

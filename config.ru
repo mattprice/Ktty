@@ -2,19 +2,7 @@ require 'rubygems'
 require 'bundler'
 
 Bundler.require
+$: << File.expand_path('../', __FILE__)
 
-# Code / Gists
-require './gist'
-use Gist
-
-# File Uploads
-require './fileshuttle'
-use FileShuttle
-
-# Assets Plugin
-require './assets'
-use Assets
-
-# Ktty
 require './ktty'
-run Ktty
+run Ktty::App
