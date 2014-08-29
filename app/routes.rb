@@ -1,4 +1,5 @@
 module Ktty
+  # Routes page requests.
   module Routes
     autoload :Assets, 'app/routes/assets'
     autoload :Base, 'app/routes/base'

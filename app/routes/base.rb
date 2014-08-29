@@ -1,5 +1,6 @@
 module Ktty
   module Routes
+    # Handles 404 requests and sets sensible defaults for all page views.
     class Base < Sinatra::Application
       configure do
         set :views, 'app/views'
@@ -12,5 +13,5 @@ module Ktty
         '404 Page Not Found'
       end
     end
- end
+  end
 end

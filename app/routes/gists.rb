@@ -3,7 +3,13 @@ require 'open-uri'
 
 module Ktty
   module Routes
+    # Processes and displays GitHub Gist requests.
     class Gists < Base
+      FORMATTER = Rouge::Formatters::HTML.new(
+        css_class: 'highlight',
+        wrap: false
+      )
+
       # Where possible, aliases should be submitted upstream to Rouge.
       ALIASES = {
         'objective-c' => 'objc'
@@ -34,19 +40,13 @@ module Ktty
         gist = load(id)
         process(gist)
 
-        # Check for Markdown files.
-        # FIX: Markdown formatting doesn't work after swap to Rouge.
-        # if @assets.index('markdown')
-          # haml :markdown
-        # else
-          haml :gist
-        # end
+        # FIX: Markdown support was removed when swapping to Rouge.
+        haml :gist
       end
 
       # Request the gist from the GitHub API.
       def load(id)
-        # Attempt API request. If it fails, return a 404.
-        # TODO: We should return something failure-specific instead of just a 404.
+        # TODO: Return something failure-specific instead of just a 404?
         return open("https://api.github.com/gists/#{id}") do |data|
           JSON.parse(data.read)
         end
@@ -58,31 +58,28 @@ module Ktty
         @title  = gist['description']
         @files  = []
 
-        # Initiate a Rouge formatter.
-        formatter = Rouge::Formatters::HTML.new(css_class: 'highlight', wrap: false)
-
         # A gist can contain multiple files so we need to loop through each one.
         gist['files'].each do |file|
           file = file[1]
 
-          # If there's no description, try using a filename as the title instead,
+          # If there's no description, use a filename as the title instead,
           # but ignore the default gist filename which begins with "gistfile".
           if @title.empty? && !file['filename'].start_with?('gistfile')
             @title = file['filename']
           end
+
+          # If we still don't have a page title, use the gist ID as a fallback.
+          @title = "gist:#{gist['id']}" if @title.empty?
 
           # Find the correct Rouge lexer for the given language.
           language = find_aliases file['language']
           lexer = Rouge::Lexer.find(language) || Rouge::Lexers::PlainText.new
 
           @files.push(
-            'content'  => formatter.format(lexer.lex(file['content'])),
+            'content'  => FORMATTER.format(lexer.lex(file['content'])),
             'name'     => file['filename']
           )
         end
-
-        # If we still don't have a page title, use the gist ID as a fallback.
-        @title = "gist:#{gist['id']}" if @title.empty?
       end
     end
   end

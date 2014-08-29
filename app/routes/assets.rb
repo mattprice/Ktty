@@ -1,5 +1,6 @@
 module Ktty
   module Routes
+    # Compiles and serves non-static Ktty assets.
     class Assets < Base
       configure do
         set :assets, assets = Sprockets::Environment.new(settings.root)
@@ -15,16 +16,20 @@ module Ktty
 
       get '/css/:file' do |file|
         content_type('text/css')
-        if content = settings.assets[file]
-          return content
-        end
+
+        content = settings.assets[file]
+        return content if content
 
         error 404
       end
 
       get '/js/:file' do |file|
         content_type('application/javascript')
-        settings.assets[file]
+
+        content = settings.assets[file]
+        return content if content
+
+        error 404
       end
     end
   end
