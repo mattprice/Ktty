@@ -4,6 +4,8 @@ module Ktty
       configure do
         set :views, 'app/views'
         set :root, App.root
+
+        Haml::Options.defaults[:escape_html] = true
       end
 
       not_found do

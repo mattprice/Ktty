@@ -1,10 +1,10 @@
 %html
   %head
     %title<
-      &= @title
+      = @title
     %link{:href => 'http://kevinburke.bitbucket.org/markdowncss/markdown.css', :rel =>'stylesheet', :type => 'text/css'}
 
   %body
     -# TODO: Add support for multiple files.
     - markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :tables => true, :fenced_code_blocks => true, :footnotes => true)
-    = markdown.render(@files.first['content'])
+    != markdown.render(@files.first['content'])
