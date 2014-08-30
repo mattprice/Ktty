@@ -1,15 +1,19 @@
 %html
   %head
     %title<
-      = @title
+      = @title || @desc
     %link{:href => 'http://fonts.googleapis.com/css?family=Source+Code+Pro', :rel => 'stylesheet', :type => 'text/css'}
     %link{:href => '/css/application.css', :rel => 'stylesheet', :type => 'text/css'}
 
   %body
     %header
-      .center= @title
+      %h1= @title
+      - unless @desc.empty?
+        %h2= @desc
     - @files.each do |file|
-      %h2= file['name']
+      - unless @files.count == 1 || file['name'].empty?
+        %h3= file['name']
       %pre{:class => 'line-numbers'}
         %code{:class => 'highlight'}!= file['content']
+
     %script{type: 'text/javascript', src: '/js/application.js'}

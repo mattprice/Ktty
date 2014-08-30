@@ -55,21 +55,16 @@ module Ktty
       end
 
       def process(gist)
-        @title  = gist['description']
-        @files  = []
+        @title = ''
+        @desc  = gist['description']
+        @files = []
 
-        # A gist can contain multiple files so we need to loop through each one.
+        # A gist can contain multiple files.
         gist['files'].each do |file|
           file = file[1]
 
-          # If there's no description, use a filename as the title instead,
-          # but ignore the default gist filename which begins with "gistfile".
-          if @title.empty? && !file['filename'].start_with?('gistfile')
-            @title = file['filename']
-          end
-
-          # If we still don't have a page title, use the gist ID as a fallback.
-          @title = "gist:#{gist['id']}" if @title.empty?
+          # The default "gistfile1.ext" filename is useless, so get rid of it.
+          file['filename'] = '' if file['filename'].start_with?('gistfile')
 
           # Find the correct Rouge lexer for the given language.
           language = find_aliases file['language']
@@ -79,6 +74,15 @@ module Ktty
             'content'  => FORMATTER.format(lexer.lex(file['content'])),
             'name'     => file['filename']
           )
+        end
+
+        # A filename is the preferred page title if there is only one file.
+        @title = @files[0]['name'] if @files.count == 1
+
+        # Use the description or gist ID if there are multiple files.
+        if @title.empty?
+          @title = @desc || "gist:#{gist['id']}"
+          @desc = ''
         end
       end
     end

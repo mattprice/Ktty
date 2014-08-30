@@ -19,21 +19,34 @@ a {
   transform: translateY(-50%);
 }
 
-h2 {
-   font-family: 'Source Code Pro', Consolas, Monaco, 'Andale Mono', monospace;
-   font-size: 20px;
-   font-weight: normal;
-   margin: 2em .5em 0 .75em;
-   text-transform: uppercase;
-}
-
 header {
   width: 100%;
   background-color: #fff;
   border-bottom: 1px solid #ddd;
   text-align: center;
-  height: 50px;
   font-family: "Avenir Next";
   font-weight: 400;
-  margin-bottom: -25px; /* 1/2 the height */
+  padding: .8em;
+  margin-bottom: .5em;
+}
+
+h1 {
+  font-size: 1em;
+  font-weight: normal;
+  margin: 0;
+}
+
+h2 {
+  font-size: .8em;
+  font-weight: normal;
+  color: #999;
+  margin: 0;
+}
+
+h3 {
+   font-family: 'Source Code Pro', Consolas, Monaco, 'Andale Mono', monospace;
+   font-size: 20px;
+   font-weight: normal;
+   margin: .5em .5em 0 .75em;
+   text-transform: uppercase;
 }
