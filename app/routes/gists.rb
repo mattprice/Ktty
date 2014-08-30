@@ -46,8 +46,15 @@ module Ktty
 
       # Request the gist from the GitHub API.
       def load(id)
+        url = "https://api.github.com/gists/#{id}"
+
+        if ENV['GH_CLIENT'] && ENV['GH_SECRET']
+          url += "?client_id=#{ENV['GH_CLIENT']}"
+          url += "&client_secret=#{ENV['GH_SECRET']}"
+        end
+
         # TODO: Return something failure-specific instead of just a 404?
-        return open("https://api.github.com/gists/#{id}") do |data|
+        return open(url) do |data|
           JSON.parse(data.read)
         end
       rescue OpenURI::HTTPError

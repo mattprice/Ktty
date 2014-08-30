@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.1.1'
 
+gem 'dotenv',         '~> 0.11'
+
 gem 'sinatra',        '~> 1.4'
 
 gem 'haml',           '~> 4.0'
