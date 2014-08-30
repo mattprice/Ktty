@@ -1,22 +1,29 @@
-// Based on the line numbers plugin for Prism.js
+// Based on the line number plugin for Prism.js
 // https://github.com/LeaVerou/prism/blob/gh-pages/plugins/line-numbers/prism-line-numbers.js
 (function(){
-  var code = document.querySelector('code');
-  var pre = code.parentNode;
+  // getElementsByTagName() doesn't natively support forEach().
+  // https://gist.github.com/DavidBruant/1016007
+  NodeList.prototype.forEach = Array.prototype.forEach;
+  HTMLCollection.prototype.forEach = Array.prototype.forEach;
 
-  var linesNum = (1 + code.textContent.split('\n').length);
-  var lineNumbersWrapper;
+  var tags = document.getElementsByTagName('code');
+  tags.forEach(function(code) {
+    var pre = code.parentNode;
 
-  lines = new Array(linesNum);
-  lines = lines.join('<span></span>');
+    var linesNum = (1 + code.textContent.split('\n').length);
+    var lineNumbersWrapper;
 
-  lineNumbersWrapper = document.createElement('span');
-  lineNumbersWrapper.className = 'line-numbers-rows';
-  lineNumbersWrapper.innerHTML = lines;
+    lines = new Array(linesNum);
+    lines = lines.join('<span></span>');
 
-  if (pre.hasAttribute('data-start')) {
-    pre.style.counterReset = 'linenumber ' + (parseInt(pre.getAttribute('data-start'), 10) - 1);
-  }
+    lineNumbersWrapper = document.createElement('span');
+    lineNumbersWrapper.className = 'line-numbers-rows';
+    lineNumbersWrapper.innerHTML = lines;
 
-  code.appendChild(lineNumbersWrapper);
+    if (pre.hasAttribute('data-start')) {
+      pre.style.counterReset = 'linenumber ' + (parseInt(pre.getAttribute('data-start'), 10) - 1);
+    }
+
+    code.appendChild(lineNumbersWrapper);
+  });
 })();
