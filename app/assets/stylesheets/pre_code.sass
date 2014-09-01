@@ -1,0 +1,51 @@
+@import 'bourbon'
+
+/* Code Blocks
+ * -----------
+
+pre,
+code
+  color: black
+  direction: ltr
+  font-family: 'Source Code Pro', $monospace
+  font-size: 16px
+  text-align: left
+  white-space: pre
+  word-spacing: normal
+  @include prefixer(tab-size, 4, moz o spec)
+  @include hyphens(none)
+
+pre
+  margin: 0
+  overflow: auto
+  padding: 10px 10px 15px 60px
+  position: relative
+
+/* Line Numbers
+ * ------------
+
+.line-numbers
+  position: relative
+  counter-reset: linenumber
+  code
+    position: relative
+
+.line-numbers-rows
+  font-size: 100%
+  left: -3.8em
+  letter-spacing: -1px
+  pointer-events: none
+  position: absolute
+  top: 0
+  @include user-select(none)
+  width: 3em // Works for line-numbers below 1000 lines
+  span
+    pointer-events: none
+    display: block
+    counter-increment: linenumber
+    &:before
+      content: counter(linenumber)
+      color: #999
+      display: block
+      padding-right: 0.8em
+      text-align: right

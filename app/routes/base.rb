@@ -18,7 +18,7 @@ module Ktty
           ]
 
           css :app, '/css/app.css', [
-            '/css/**/*',
+            '/css/**/*'
           ]
 
           js_compression :uglify

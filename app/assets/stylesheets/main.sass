@@ -1,0 +1,44 @@
+@import 'bourbon'
+
+body
+  margin: 0
+  padding: 0
+  background-color: #fbfbfb
+
+a
+  color: inherit
+
+.center
+  position: relative
+  top: 50%
+  @include transform(translateY(-50%))
+  text-align: center
+
+header
+  font-family: 'Avenir Next', $helvetica
+  font-weight: 400
+  box-sizing: border-box
+  width: 100%
+  margin-bottom: .5em
+  padding: .8em
+  text-align: center
+  border-bottom: 1px solid #ddd
+  background-color: #fff
+
+h1
+  font-size: 1em
+  font-weight: normal
+  margin: 0
+
+h2
+  font-size: .8em
+  font-weight: normal
+  margin: 0
+  color: #999
+
+h3
+  font-family: 'Source Code Pro', $monospace
+  font-size: 20px
+  font-weight: normal
+  margin: .5em .5em 0 .75em
+  text-transform: uppercase
