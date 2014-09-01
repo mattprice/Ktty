@@ -1,14 +1,15 @@
 source 'https://rubygems.org'
 ruby '2.1.1'
 
-gem 'dotenv',         '~> 0.11'
+gem 'dotenv'
+gem 'sinatra'
 
-gem 'sinatra',        '~> 1.4'
+# Rendering
+gem 'haml'
+gem 'redcarpet'
+gem 'rouge'
 
-gem 'haml',           '~> 4.0'
-gem 'redcarpet',      '~> 3.1'
-gem 'rouge',          '~> 1.6'
-
-gem 'sprockets',      '~> 2.12'
-gem 'uglifier',       '~> 2.5'
-gem 'yui-compressor', '~> 0.12'
+# Assets
+gem 'sinatra-assetpack'
+gem 'bourbon'
+gem 'uglifier'
