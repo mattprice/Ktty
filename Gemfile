@@ -13,3 +13,12 @@ gem 'rouge'
 gem 'sinatra-assetpack'
 gem 'bourbon'
 gem 'uglifier'
+
+group :production do
+  gem 'unicorn'
+end
+
+group :development do
+  gem 'mina'
+  gem 'mina-unicorn'
+end
