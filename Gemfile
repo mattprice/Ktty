@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby '2.1.1'
 
 gem 'dotenv'
 gem 'sinatra'
@@ -19,6 +18,6 @@ group :production do
 end
 
 group :development do
-  gem 'mina'
-  gem 'mina-unicorn'
+  gem 'mina', :require => false
+  gem 'mina-unicorn', :require => false
 end
